@@ -1,0 +1,35 @@
+menu "Application configurations"
+
+config TIPO_DISPOSITIVO
+	int "Tipo de dispositivo"
+	default 0
+	help
+		indica el tipo de dispositivo
+
+
+menu "Device configurations"
+
+config GPIO_PIN_RELE
+	int "Pin GPIO para activar el rele"
+	default 12
+	help 
+		Indica el pin gpi con el que se activa el rele
+
+config GPIO_PIN_LED
+	int "Pin GPIO para activar el led"
+	default 13
+	help 
+		Indica el pin gpi con el que se activa el LED
+
+config GPIO_PIN_BOTON
+	int "Pin GPIO para activar el boton"
+	default 10
+	help 
+		Indica el pin gpi con el que se activa el boton
+
+
+endmenu
+
+
+
+endmenu

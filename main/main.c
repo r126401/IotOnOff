@@ -57,6 +57,7 @@ void app_main()
 	uart_set_baudrate(UART_NUM_0, 115200);
 	ESP_LOGI(TAG, ""TRAZAR"COMIENZO DE LA APLICACION version", INFOTRAZA);
 
+
 	error = init_code_application(&datosApp);
 	create_event_task(&datosApp);
 

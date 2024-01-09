@@ -10,7 +10,7 @@
 EXTRA_COMPONENT_DIRS = /opt/desarrollo/espidf/components
 SW_VERSION :="`date +'%y%m%d%H%M'`"
 CFLAGS := -DVERSION_SW=$(SW_VERSION)
-PROJECT_NAME := IotOnOff
+PROJECT_NAME := iotOnOff
 
 #EXTRA_COMPONENT_DIRS = /opt/esp/componentes
 #COMPONENT_PRIV_INCLUDEDIRS = /opt/esp/componentes
@@ -32,16 +32,6 @@ DIR_LASTVERSION = "lastVersion"
 URL = "/firmware/$(PROJECT_NAME)/"
 BUILD_DIR = build
 PROJECT_VER = $(SW_VERSION)
-
-#DIR_LAST_VERSION=/trastero/dispositivosIot/lastVersion/$(PROJECT_NAME)
-#EJECUTABLE_COPIAR=instalar.py
-#SERVIDOR_MQTT = "jajicaiot.ddns.net"
-#PUERTO_MTT = 80
-#URL = "/firmware/$(PROJECT_NAME)/"
-#DIRECTORIO_IMAGEN = build/
-#FICHERO_OTA = $(PROJECT_NAME)_$(SW_VERSION)
-#DIRECTORIO_INSTALACION=/trastero/dispositivosIot/firmware/$(PROJECT_NAME)/
-#DIRECTORIO_LASTVERSION=/trastero/dispositivosIot/lastVersion/$(PROJECT_NAME)/
 
 
 instalar:	ota	

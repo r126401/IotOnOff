@@ -1,3 +1,6 @@
 [submodule "components/user_interface"]
 	path = components/user_interface
 	url = git@github.com:r126401/user_interface.git
+[submodule "components/components"]
+	path = components/components
+	url = git@github.com:r126401/components.git

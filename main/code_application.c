@@ -147,9 +147,7 @@ esp_err_t init_code_application(DATOS_APLICACION *datosApp) {
 
 
 
-	DATOS_GENERALES *datosGenerales;
-	datosGenerales = (DATOS_GENERALES*) calloc(1, sizeof(DATOS_GENERALES));
-	datosApp->datosGenerales = datosGenerales;
+
 
     const esp_timer_create_args_t repeater_timer_led_args = {
             .callback = &process_timer_led,

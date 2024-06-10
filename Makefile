@@ -10,7 +10,7 @@
 #EXTRA_COMPONENT_DIRS = /opt/desarrollo/espidf/components
 SW_VERSION :="`date +'%y%m%d%H%M'`"
 CFLAGS := -DVERSION_SW=$(SW_VERSION)
-PROJECT_NAME := iotOnOff
+PROJECT_NAME := IotOnOff
 
 #EXTRA_COMPONENT_DIRS = /opt/esp/componentes
 #COMPONENT_PRIV_INCLUDEDIRS = /opt/esp/componentes

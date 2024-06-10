@@ -42,9 +42,9 @@
 #include "applib.h"
 
 
-
-
 DATOS_APLICACION datosApp;
+
+
 static const char *TAG = "PLANTILLA";
 TaskHandle_t handle;
 
@@ -54,23 +54,17 @@ TaskHandle_t handle;
 void app_main()
 {
 
-	esp_err_t error = ESP_OK;
 
 
-	init_device(&datosApp);
 	ESP_LOGI(TAG, ""TRAZAR"COMIENZO DE LA APLICACION version", INFOTRAZA);
-	error = init_environment_device(&datosApp);
-	error = init_application(&datosApp);
-	if (error == ESP_OK) {
-		ESP_LOGI(TAG, ""TRAZAR"INICIALIZACION CORRECTA", INFOTRAZA);
-	} else {
+	init_global_parameters_device(&datosApp);
+	init_local_parameters_device(&datosApp);
+	init_service_device(&datosApp);
 
-	}
 
-	init_wifi_device();
-	sync_app_by_ntp(&datosApp);
-	iniciar_gestion_programacion(&datosApp);
-	init_device_mqtt(&datosApp);
+
+
+
 
 
 	//xTaskCreate(app_task, "app_task", CONFIG_RESOURCE_APP_TASK, (void*) &datosApp, 1, NULL);

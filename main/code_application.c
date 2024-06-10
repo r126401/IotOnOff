@@ -143,7 +143,7 @@ void process_timer_led(void* arg) {
 
 
 
-esp_err_t init_code_application(DATOS_APLICACION *datosApp) {
+esp_err_t init_environment_device(DATOS_APLICACION *datosApp) {
 
 
 

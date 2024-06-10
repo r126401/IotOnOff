@@ -39,6 +39,7 @@
 
 #include "esp_ota_ops.h"
 #include "conexiones_mqtt.h"
+#include "applib.h"
 
 
 
@@ -53,19 +54,12 @@ TaskHandle_t handle;
 void app_main()
 {
 
-
-	DATOS_GENERALES *datosGenerales;
-	datosGenerales = (DATOS_GENERALES*) calloc(1, sizeof(DATOS_GENERALES));
-	datosApp.datosGenerales = datosGenerales;
-
 	esp_err_t error = ESP_OK;
-	uart_set_baudrate(UART_NUM_0, 115200);
+
+
+	init_device(&datosApp);
 	ESP_LOGI(TAG, ""TRAZAR"COMIENZO DE LA APLICACION version", INFOTRAZA);
-
-	create_event_task(&datosApp);
-	error = init_code_application(&datosApp);
-
-
+	error = init_environment_device(&datosApp);
 	error = init_application(&datosApp);
 	if (error == ESP_OK) {
 		ESP_LOGI(TAG, ""TRAZAR"INICIALIZACION CORRECTA", INFOTRAZA);
@@ -73,9 +67,11 @@ void app_main()
 
 	}
 
-	conectar_dispositivo_wifi();
-	//crear_tarea_mqtt(&datosApp);
-	establecer_conexion_mqtt(&datosApp);
+	init_wifi_device();
+	sync_app_by_ntp(&datosApp);
+	iniciar_gestion_programacion(&datosApp);
+	init_device_mqtt(&datosApp);
+
 
 	//xTaskCreate(app_task, "app_task", CONFIG_RESOURCE_APP_TASK, (void*) &datosApp, 1, NULL);
 

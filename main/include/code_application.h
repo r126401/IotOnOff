@@ -12,7 +12,7 @@
 #include "common_data.h"
 #include "esp_timer.h"
 
-esp_err_t init_code_application(DATOS_APLICACION *datosApp);
+esp_err_t init_environment_device(DATOS_APLICACION *datosApp);
 esp_err_t app_task(DATOS_APLICACION *datosApp);
 enum ESTADO_RELE relay_operation(DATOS_APLICACION *datosApp, enum TIPO_ACTUACION_RELE tipo, enum ESTADO_RELE operacion);
 void activate_timer_led(int timing);

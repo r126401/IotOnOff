@@ -45,7 +45,7 @@
 DATOS_APLICACION datosApp;
 
 
-static const char *TAG = "PLANTILLA";
+static const char *TAG = "main.c";
 TaskHandle_t handle;
 
 
@@ -57,15 +57,14 @@ void app_main()
 
 
 	ESP_LOGI(TAG, ""TRAZAR"COMIENZO DE LA APLICACION version", INFOTRAZA);
-	init_global_parameters_device(&datosApp);
+	if (init_global_parameters_device(&datosApp)) {
+		ESP_LOGE(TAG,""TRAZAR" Error to initiate the device", INFOTRAZA);
+		return;
+	}
+
+	ESP_LOGI(TAG, ""TRAZAR" Device initialized succesfully", INFOTRAZA);
 	init_local_parameters_device(&datosApp);
 	init_service_device(&datosApp);
-
-
-
-
-
-
 
 	//xTaskCreate(app_task, "app_task", CONFIG_RESOURCE_APP_TASK, (void*) &datosApp, 1, NULL);
 

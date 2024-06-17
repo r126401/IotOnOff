@@ -143,7 +143,7 @@ void process_timer_led(void* arg) {
 
 
 
-esp_err_t init_local_parameters_device(DATOS_APLICACION *datosApp) {
+esp_err_t init_app(DATOS_APLICACION *datosApp) {
 
 
 

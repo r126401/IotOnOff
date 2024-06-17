@@ -59,22 +59,26 @@ void app_main()
 
 
 	ESP_LOGI(TAG, ""TRAZAR"COMIENZO DE LA APLICACION version", INFOTRAZA);
-	if (init_global_parameters_device(&datosApp)) {
+	if (init_device(&datosApp) != ESP_OK) {
 		ESP_LOGE(TAG,""TRAZAR" Error to initiate the device", INFOTRAZA);
 		return;
 	}
-	init_local_parameters_device(&datosApp);
+	if (init_app(&datosApp) != ESP_OK) {
+		send_event(__func__, EVENT_ERROR_APP);
+		return;
+
+	}
 
 	if (get_upgrade_data(&datosApp) == ESP_OK) {
 		send_event(__func__, EVENT_UPGRADE_FIRMWARE);
-		//change_status_application(&datosApp, UPGRADING);
 		init_wifi_device();
 		upgrade_ota_esp8266(&datosApp);
 	} else {
 		ESP_LOGI(TAG, ""TRAZAR" Device initialized succesfully", INFOTRAZA);
 		//init_local_parameters_device(&datosApp);
-		init_service_device(&datosApp);
+		init_services_device(&datosApp);
 	}
+
 
 
 

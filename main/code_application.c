@@ -21,6 +21,7 @@
 #include "esp_timer.h"
 #include "logging.h"
 #include "events_device.h"
+#include "applib.h"
 
 
 
@@ -83,7 +84,7 @@ static void isr_handler(void *dato) {
 }
 
 
-esp_err_t start_application(DATOS_APLICACION *datosApp) {
+esp_err_t configure_device(DATOS_APLICACION *datosApp) {
 
 	esp_err_t error = ESP_OK;
 
@@ -143,7 +144,8 @@ void process_timer_led(void* arg) {
 
 
 
-esp_err_t init_app(DATOS_APLICACION *datosApp) {
+esp_err_t init_hw_device(DATOS_APLICACION *datosApp) {
+
 
 
 
@@ -160,7 +162,7 @@ esp_err_t init_app(DATOS_APLICACION *datosApp) {
 	//gpio_rele_in_out();
 	gpio_set_level(CONFIG_GPIO_PIN_RELE, OFF);
 	esp_timer_create(&repeater_timer_led_args, &timer_led);
-	start_application(datosApp);
+	configure_device(datosApp);
 
 	return ESP_OK;
 

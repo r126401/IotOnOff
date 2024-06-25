@@ -55,19 +55,23 @@ void app_main()
 {
 
 
+	init_data_app(&datosApp);
 
+	if (init_hw_device(&datosApp) != ESP_OK) {
+		send_event(__func__, EVENT_ERROR_APP);
+		return;
 
+	}
 
 	ESP_LOGI(TAG, ""TRAZAR"COMIENZO DE LA APLICACION version", INFOTRAZA);
 	if (init_device(&datosApp) != ESP_OK) {
 		ESP_LOGE(TAG,""TRAZAR" Error to initiate the device", INFOTRAZA);
 		return;
 	}
-	if (init_app(&datosApp) != ESP_OK) {
-		send_event(__func__, EVENT_ERROR_APP);
-		return;
 
-	}
+
+
+
 
 	if (get_upgrade_data(&datosApp) == ESP_OK) {
 		send_event(__func__, EVENT_UPGRADE_FIRMWARE);

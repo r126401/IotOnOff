@@ -58,11 +58,18 @@ void app_main()
 	 * 1.- Init data structure to Application
 	 */
 	init_data_app(&datosApp);
+	/**
+	 * 2.- init hw used in the device to specific project
+	 */
 	if (init_hw_device(&datosApp) != ESP_OK) {
 		send_event(__func__, EVENT_ERROR_APP);
 		return;
 
 	}
+
+	/**
+	 * 3.- Init device. the device load all configurations to work
+	 */
 
 	ESP_LOGI(TAG, ""TRAZAR"COMIENZO DE LA APLICACION version", INFOTRAZA);
 	if (init_device(&datosApp) != ESP_OK) {
@@ -72,7 +79,10 @@ void app_main()
 
 
 
-
+	/**
+	 * 4.- Check if the device is in upgrade phase. If the device is not in upgrade phase,
+	 * the device starting normally
+	 */
 
 	if (get_upgrade_data(&datosApp) == ESP_OK) {
 		send_event(__func__, EVENT_UPGRADE_FIRMWARE);
@@ -80,18 +90,15 @@ void app_main()
 		upgrade_ota_esp8266(&datosApp);
 	} else {
 		ESP_LOGI(TAG, ""TRAZAR" Device initialized succesfully", INFOTRAZA);
-		//init_local_parameters_device(&datosApp);
 		init_services_device(&datosApp);
 	}
 
 
 
+	/**
+	 * Put here new tasks associated to project
+	 */
 
-
-
-
-
-	//xTaskCreate(app_task, "app_task", CONFIG_RESOURCE_APP_TASK, (void*) &datosApp, 1, NULL);
 
 
 

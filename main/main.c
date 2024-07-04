@@ -42,12 +42,11 @@
 #include "applib.h"
 
 
-DATOS_APLICACION datosApp;
+//DATOS_APLICACION datosApp;
 
 
 static const char *TAG = "main.c";
-TaskHandle_t handle;
-
+DATOS_APLICACION datosApp;
 
 
 
@@ -55,8 +54,10 @@ void app_main()
 {
 
 
+	/**
+	 * 1.- Init data structure to Application
+	 */
 	init_data_app(&datosApp);
-
 	if (init_hw_device(&datosApp) != ESP_OK) {
 		send_event(__func__, EVENT_ERROR_APP);
 		return;
@@ -75,7 +76,7 @@ void app_main()
 
 	if (get_upgrade_data(&datosApp) == ESP_OK) {
 		send_event(__func__, EVENT_UPGRADE_FIRMWARE);
-		init_wifi_device();
+		init_wifi_device(&datosApp);
 		upgrade_ota_esp8266(&datosApp);
 	} else {
 		ESP_LOGI(TAG, ""TRAZAR" Device initialized succesfully", INFOTRAZA);

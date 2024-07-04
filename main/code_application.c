@@ -194,7 +194,7 @@ void activate_timer_led(int timing) {
 
 }
 
-void command_status(DATOS_APLICACION *datosApp, cJSON *command) {
+void appuser_get_status_command(DATOS_APLICACION *datosApp, cJSON *command) {
 
 	ESP_LOGI(TAG, ""TRAZAR"Consultamos el estado de la aplicacion", INFOTRAZA);
     cJSON_AddNumberToObject(command, APP_COMAND_ESTADO_RELE, gpio_get_level(CONFIG_GPIO_PIN_RELE));
@@ -207,7 +207,7 @@ void command_status(DATOS_APLICACION *datosApp, cJSON *command) {
 
 }
 
-void command_op_relay_remote(DATOS_APLICACION *datosApp, cJSON *command) {
+void appuser_set_relay_operation_command(DATOS_APLICACION *datosApp, cJSON *command) {
 
 	ESP_LOGI(TAG, ""TRAZAR"Consultamos el estado de la aplicacion", INFOTRAZA);
     cJSON_AddNumberToObject(command, APP_COMAND_ESTADO_RELE, gpio_get_level(CONFIG_GPIO_PIN_RELE));

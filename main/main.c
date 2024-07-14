@@ -42,8 +42,6 @@
 #include "applib.h"
 
 
-//DATOS_APLICACION datosApp;
-
 
 static const char *TAG = "main.c";
 DATOS_APLICACION datosApp;
